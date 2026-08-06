@@ -1,0 +1,123 @@
+{
+  "entities": {
+    "users": {
+      "title": "User Profile",
+      "description": "Team member and manager profile details including job responsibilities",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "displayName": { "type": "string" },
+        "email": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "role": { "type": "string", "enum": ["manager", "member"] },
+        "title": { "type": "string" },
+        "department": { "type": "string" },
+        "generalResponsibilities": { "type": "array", "items": { "type": "string" } },
+        "specificResponsibilities": { "type": "array", "items": { "type": "string" } },
+        "joinedAt": { "type": "string" },
+        "activeProjectIds": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["uid", "displayName", "email", "role"]
+    },
+    "projects": {
+      "title": "Team Project",
+      "description": "Ongoing projects tracked on shared calendar and analytics",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "color": { "type": "string" },
+        "status": { "type": "string", "enum": ["planning", "in_progress", "on_hold", "completed"] },
+        "startDate": { "type": "string" },
+        "endDate": { "type": "string" },
+        "managerId": { "type": "string" },
+        "memberIds": { "type": "array", "items": { "type": "string" } },
+        "completionPercentage": { "type": "number" },
+        "category": { "type": "string" }
+      },
+      "required": ["name", "status", "startDate", "endDate"]
+    },
+    "tasks": {
+      "title": "Personnel Task",
+      "description": "Action items assigned to personnel with deadlines and priority",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "projectId": { "type": "string" },
+        "projectName": { "type": "string" },
+        "assigneeId": { "type": "string" },
+        "assigneeName": { "type": "string" },
+        "assigneePhoto": { "type": "string" },
+        "creatorId": { "type": "string" },
+        "priority": { "type": "string", "enum": ["urgent", "high", "medium", "low"] },
+        "status": { "type": "string", "enum": ["todo", "in_progress", "in_review", "completed"] },
+        "dueDate": { "type": "string" },
+        "estimatedHours": { "type": "number" },
+        "loggedHours": { "type": "number" },
+        "createdAt": { "type": "string" },
+        "completedAt": { "type": "string" }
+      },
+      "required": ["title", "priority", "status", "dueDate", "assigneeId"]
+    },
+    "milestones": {
+      "title": "Project Milestone",
+      "description": "Key completion markers for team projects",
+      "type": "object",
+      "properties": {
+        "projectId": { "type": "string" },
+        "title": { "type": "string" },
+        "dueDate": { "type": "string" },
+        "completed": { "type": "boolean" },
+        "completedBy": { "type": "string" },
+        "completedAt": { "type": "string" }
+      },
+      "required": ["projectId", "title", "dueDate"]
+    },
+    "activity_logs": {
+      "title": "Activity Log",
+      "description": "Real-time stream of personnel activity and status updates",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "userPhoto": { "type": "string" },
+        "action": { "type": "string" },
+        "targetType": { "type": "string" },
+        "targetName": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["userId", "action", "timestamp"]
+    },
+    "notifications": {
+      "title": "System Notification",
+      "description": "Push and in-app alerts for deadlines and task changes",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "message": { "type": "string" },
+        "type": { "type": "string" },
+        "read": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["title", "message", "type", "read"]
+    },
+    "messages": {
+      "title": "Chat Message",
+      "description": "Team channels, project rooms, and direct member communication",
+      "type": "object",
+      "properties": {
+        "senderId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "senderPhoto": { "type": "string" },
+        "recipientId": { "type": "string" },
+        "recipientType": { "type": "string", "enum": ["channel", "direct", "project"] },
+        "recipientName": { "type": "string" },
+        "content": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["senderId", "senderName", "recipientId", "recipientType", "content", "timestamp"]
+    }
+  }
+}

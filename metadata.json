@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix Sunhill Task Tracking System",
+  "description": "Real-time personnel task tracking, shared team project calendar, user profiles, performance analytics, and role-based access control for team managers and members.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
