@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+  --color-applegreen-50: #f7fee7;
+  --color-applegreen-100: #ecfccb;
+  --color-applegreen-500: #84cc16;
+  --color-applegreen-600: #65a30d;
+  --color-applegreen-700: #4d7c0f;
+
+  --color-sunshine-50: #fffbeeb;
+  --color-sunshine-100: #fef3c7;
+  --color-sunshine-400: #fbbf24;
+  --color-sunshine-500: #f59e0b;
+  --color-sunshine-600: #d97706;
+}
